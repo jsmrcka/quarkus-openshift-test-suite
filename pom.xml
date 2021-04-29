@@ -72,7 +72,7 @@
         <version.keytool-maven-plugin>1.5</version.keytool-maven-plugin>
         <version.maven-compiler-plugin>3.8.1</version.maven-compiler-plugin>
         <version.maven-jar-plugin>3.2.0</version.maven-jar-plugin>
-        <version.maven-surefire-plugin>2.22.2</version.maven-surefire-plugin>
+        <version.maven-surefire-plugin>3.0.0-M5</version.maven-surefire-plugin>
         <version.quarkus>1.13.3.Final</version.quarkus>
         <version.plugin.quarkus>${version.quarkus}</version.plugin.quarkus>
         <version.testcontainers>1.15.3</version.testcontainers>
@@ -270,6 +270,11 @@
                         <systemProperties>
                             <java.util.logging.manager>org.jboss.logmanager.LogManager</java.util.logging.manager>
                         </systemProperties>
+                        <statelessTestsetReporter
+                                implementation="org.apache.maven.plugin.surefire.extensions.junit5.JUnit5Xml30StatelessReporter">
+                            <usePhrasedTestCaseClassName>true</usePhrasedTestCaseClassName>
+                            <usePhrasedTestCaseMethodName>true</usePhrasedTestCaseMethodName>
+                        </statelessTestsetReporter>
                     </configuration>
                 </plugin>
                 <plugin>
